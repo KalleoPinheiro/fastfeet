@@ -2,6 +2,6 @@
   "watch": ["bin", "src"],
   "ext": "ts",
   "execMap": {
-    "ts": "sucrase-node ./bin/server.ts"
+    "ts": "node --inspect -r tsconfig-paths/register -r sucrase/register ./bin/server.ts"
   }
 }

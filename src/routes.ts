@@ -6,4 +6,6 @@ const routes = Router();
 
 routes.get('/', HomeController.index);
 
+routes.post('/user', HomeController.store);
+
 export default routes;

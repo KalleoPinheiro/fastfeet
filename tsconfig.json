@@ -4,7 +4,15 @@
     "rootDir": "../",
     "baseUrl": "./src",
     "paths": {
-      "@app/*": ["./app/*"]
+      "@app/*": ["./app/*"],
+      "@models/*": ["./app/models/*"],
+      "@controllers/*": ["./app/controllers/*"],
+      "@database/*": ["./database/*"],
+      "@configs/*": ["./configs/*"],
+      "@tests/*": ["./tests/*"],
+      "@typings/*": ["./typings/*"],
+      "@utils/*": ["./utils/*"],
+      "@logs/*": ["./tools/logging/*"],
     },
     "strict": true,
     "strictPropertyInitialization": false,
@@ -22,8 +30,8 @@
   },
   "lib": ["es2015"],
   "files": ["./node_modules/@types/node/index.d.ts"],
-  "include": ["<rootDir>/bin/**/*.js", "src/**/*.ts"],
-  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts", "<rootDir>/bin/*.ts", "src/configs/database.js"],
+  "exclude": ["node_modules", "**/*.test.ts"],
   "pretty": true
 }
 
