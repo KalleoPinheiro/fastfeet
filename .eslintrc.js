@@ -23,6 +23,12 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', '@typescript-eslint/eslint-plugin', 'jest', 'prettier', 'eslint-plugin-import-helpers'],
   rules: {
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      {
+          "prefixWithI": "always"
+      }
+    ],
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
     'import-helpers/order-imports': [
@@ -32,6 +38,12 @@ module.exports = {
         groups: [
           'module',
           '/^@app/',
+          '/^@configs/',
+          '/^@database/',
+          '/^@tests/',
+          '/^@typings/',
+          '/^@logs/',
+          '/^@utils/',
           ['parent', 'sibling', 'index'],
         ],
         alphabetize: { order: 'asc', ignoreCase: true },

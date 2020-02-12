@@ -3,7 +3,10 @@ import errorHandler from 'errorhandler';
 import http from 'http';
 import notifier from 'node-notifier';
 
-import app from '../src/app';
+import 'dotenv/config';
+import app from './../src/app';
+
+const { NODE_ENV, PORT } = process.env;
 
 const normalizePort = (val: string): number | string | boolean => {
   const port = parseInt(val, 10);
@@ -32,7 +35,7 @@ const errorNotification = (
   });
 };
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(PORT || '3000');
 app.set('port', port);
 const server = http.createServer(app);
 
@@ -42,7 +45,7 @@ const onListening = (): void => {
   debug(`Listening on ${bind}`);
 };
 
-if (process.env.NODE_ENV === 'development') {
+if (NODE_ENV === 'development') {
   app.use(errorHandler({ log: errorNotification }));
 }
 
