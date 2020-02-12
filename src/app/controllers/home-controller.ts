@@ -1,11 +1,8 @@
 import { Request, Response } from 'express';
 
-// import User from '@app/models/user';
+import User from '@models/user';
 
-// import Logger from '@logs/logger';
-
-import Logger from '../../tools/logging/logger';
-import User from '../models/user';
+import Logger from '@logs/logger';
 
 class HomeController {
   public async index(_: Request, res: Response): Promise<Response> {

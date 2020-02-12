@@ -2,7 +2,7 @@
   "name": "fastfeet",
   "version": "1.0.0",
   "description": "GoStack Bootcamp - Challenge  Rocketseat - 10.0",
-  "main": "./bin/server.ts",
+  "main": "./src/server.ts",
   "repository": "https://github.com/KalleoPinheiro/fastfeet.git",
   "author": "Kalleo Pinheiro <kalleo.pinheiro@zup.com.br>",
   "private": true,
@@ -11,7 +11,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --collect-coverage",
     "clean": "rm -rf ./yarn-lock.json ./node_modules ./dist; yarn install; yarn audit --fix",
-    "dev": "nodemon ./bin/server.ts",
+    "dev": "nodemon ./src/server.ts",
     "build": "yarn clean; tsc",
     "commit": "git-cz",
     "tsc": "tsc"
@@ -74,11 +74,6 @@
   },
   "lint-staged": {
     "src/**/*.{ts}": [
-      "eslint . --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "bin/*.ts": [
       "eslint . --fix",
       "prettier --write",
       "git add"

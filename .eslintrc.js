@@ -38,6 +38,8 @@ module.exports = {
         groups: [
           'module',
           '/^@app/',
+          '/^@models/',
+          '/^@controllers/',
           '/^@configs/',
           '/^@database/',
           '/^@tests/',
