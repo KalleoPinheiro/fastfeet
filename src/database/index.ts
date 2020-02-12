@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-import { databaseConfig } from '@configs/database';
+import databaseConfig from '@configs/database';
 
 const { dialect, username, password, host, port, database } = databaseConfig;
 

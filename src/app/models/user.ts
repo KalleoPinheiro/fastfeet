@@ -6,7 +6,13 @@ import { StaticModel } from '@typings/static-model';
 
 import { IUser } from '@utils/interfaces/user';
 
-const User = Database.connection.define('User', {
+const User = Database.connection.define('users', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   name: {
     type: DataTypes.STRING,
   },

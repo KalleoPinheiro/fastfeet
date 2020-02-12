@@ -11,10 +11,11 @@ class HomeController {
 
   public async store(req: Request, res: Response): Promise<Response> {
     try {
-      User.create(req.body);
-      return res.json();
+      const newUser = await User.create(req.body);
+      return res.json(newUser);
     } catch (error) {
       Logger.error(error);
+      console.log(error);
       return res.status(400).json('Failed to create user');
     }
   }

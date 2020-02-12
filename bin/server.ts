@@ -3,8 +3,7 @@ import errorHandler from 'errorhandler';
 import http from 'http';
 import notifier from 'node-notifier';
 
-import 'dotenv/config';
-import app from './app';
+import app from '../src/app';
 
 const { NODE_ENV, PORT } = process.env;
 

@@ -30,7 +30,7 @@
   },
   "lib": ["es2015"],
   "files": ["./node_modules/@types/node/index.d.ts"],
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "<rootDir>/bin/*.ts", "src/configs/database.js"],
   "exclude": ["node_modules", "**/*.test.ts"],
   "pretty": true
 }
