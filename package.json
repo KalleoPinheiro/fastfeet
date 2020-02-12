@@ -2,7 +2,7 @@
   "name": "fastfeet",
   "version": "1.0.0",
   "description": "GoStack Bootcamp - Challenge  Rocketseat - 10.0",
-  "main": "./src/server.ts",
+  "main": "./bin/server.ts",
   "repository": "https://github.com/KalleoPinheiro/fastfeet.git",
   "author": "Kalleo Pinheiro <kalleo.pinheiro@zup.com.br>",
   "private": true,
