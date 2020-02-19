@@ -6,11 +6,10 @@ module.exports = {
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'plugin:prettier/@typescript-eslint',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:prettier/recommended',
-    'standard',
   ],
   globals: {
     Atomics: 'readonly',
@@ -26,7 +25,7 @@ module.exports = {
     "@typescript-eslint/interface-name-prefix": [
       "error",
       {
-          "prefixWithI": "always"
+        "prefixWithI": "always"
       }
     ],
     semi: ['error', 'always'],
@@ -59,6 +58,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-await-in-loop': 'off',
     'import/prefer-default-export': 'off',
+    'camelcase': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
