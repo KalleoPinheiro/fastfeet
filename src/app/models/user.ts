@@ -14,17 +14,21 @@ const User = Database.connection.define('users', {
   email: {
     type: DataTypes.STRING,
   },
+  admin: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
   password: {
     type: DataTypes.VIRTUAL,
   },
-  passwordHash: {
+  password_hash: {
     type: DataTypes.STRING,
   },
 }) as StaticModel<IUser>;
 
 User.addHook('beforeSave', async (user: IUser) => {
   if (user.password) {
-    user.passwordHash = await hash(user.password, 8);
+    user.password_hash = await hash(user.password, 8);
   }
 });
 

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Datatypes) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('recipients', {
       id: {
         type: Datatypes.INTEGER,
         allowNull: false,
@@ -11,18 +11,32 @@ module.exports = {
         type: Datatypes.STRING,
         allowNull: false,
       },
-      email: {
+      street: {
         type: Datatypes.STRING,
         allowNull: false,
-        unique: true,
       },
-      admin: {
-        type: Datatypes.BOOLEAN,
-        defaulValue: false,
+      number: {
+        type: Datatypes.STRING,
         allowNull: false,
       },
-      password_hash: {
+      complement: {
         type: Datatypes.STRING,
+        allowNull: true,
+      },
+      state: {
+        type: Datatypes.STRING,
+        allowNull: false,
+      },
+      city: {
+        type: Datatypes.STRING,
+        allowNull: false,
+      },
+      country: {
+        type: Datatypes.STRING,
+        allowNull: false,
+      },
+      zip_code: {
+        type: Datatypes.INTEGER,
         allowNull: false,
       },
       created_at: {
@@ -37,6 +51,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('recipients');
   },
 };

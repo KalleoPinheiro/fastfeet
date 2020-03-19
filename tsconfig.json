@@ -7,12 +7,15 @@
       "@app/*": ["./app/*"],
       "@models/*": ["./app/models/*"],
       "@controllers/*": ["./app/controllers/*"],
+      "@validations/*": ["./app/validations/*"],
+      "@errors/*": ["./app/errors/*"],
+      "@middlewares/*": ["./app/middlewares/*"],
       "@database/*": ["./database/*"],
       "@configs/*": ["./configs/*"],
       "@tests/*": ["./tests/*"],
       "@typings/*": ["./typings/*"],
       "@utils/*": ["./utils/*"],
-      "@logs/*": ["./tools/logging/*"],
+      "@logs/*": ["./tools/logging/*"]
     },
     "strict": true,
     "strictPropertyInitialization": false,
@@ -34,5 +37,3 @@
   "exclude": ["node_modules", "**/*.test.ts"],
   "pretty": true
 }
-
-

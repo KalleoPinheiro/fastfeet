@@ -2,7 +2,7 @@ module.exports = {
   env: {
     node: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -13,20 +13,27 @@ module.exports = {
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/eslint-plugin', 'jest', 'prettier', 'eslint-plugin-import-helpers'],
+  plugins: [
+    '@typescript-eslint',
+    '@typescript-eslint/eslint-plugin',
+    'jest',
+    'prettier',
+    'eslint-plugin-import-helpers',
+  ],
   rules: {
-    "@typescript-eslint/interface-name-prefix": [
-      "error",
+    '@typescript-eslint/interface-name-prefix': [
+      'error',
       {
-        "prefixWithI": "always"
-      }
+        prefixWithI: 'always',
+      },
     ],
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
@@ -39,6 +46,9 @@ module.exports = {
           '/^@app/',
           '/^@models/',
           '/^@controllers/',
+          '/^@validations/',
+          '/^@middlewares/',
+          '/^@errors/',
           '/^@configs/',
           '/^@database/',
           '/^@tests/',
@@ -50,7 +60,7 @@ module.exports = {
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
-    quotes: ['error', 'single', { 'avoidEscape': true }],
+    quotes: ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'only-multiline'],
     'space-before-function-paren': 'off',
     'prettier/prettier': 'error',
@@ -58,32 +68,35 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-await-in-loop': 'off',
     'import/prefer-default-export': 'off',
-    'camelcase': 'off',
+    camelcase: 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
       {
-        'ts': 'never'
-      }
-    ]
+        ts: 'never',
+      },
+    ],
   },
   overrides: [
     {
       files: ['*.js', '*.ts'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off'
-      }
-    }
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
   ],
   settings: {
     'import/extensions': ['.ts', '.js'],
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.js']
+      '@typescript-eslint/parser': ['.ts', '.js'],
     },
     'import/resolver': {
-      'typescript': {
-        'alwaysTryTypes': true
-      }
-    }
-  }
+      typescript: {
+        alwaysTryTypes: true,
+      },
+      node: {
+        extensions: ['.ts', '.js', '.jsx'],
+      },
+    },
+  },
 };

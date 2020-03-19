@@ -1,7 +1,10 @@
+import 'dotenv/config';
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
+
+import ErrorMiddleware from '@middlewares/error-middleware';
 
 import routes from './routes';
 
@@ -19,6 +22,7 @@ class App {
     this.express.use(helmet());
     this.express.use(cors());
     this.express.use(compression());
+    this.express.use(ErrorMiddleware);
   }
 
   private routes(): void {

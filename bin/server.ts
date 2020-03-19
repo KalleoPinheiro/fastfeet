@@ -1,3 +1,4 @@
+import {} from 'dotenv/config';
 import debug from 'debug';
 import errorHandler from 'errorhandler';
 import http from 'http';
