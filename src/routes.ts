@@ -1,18 +1,22 @@
-import { Router } from 'express';
-
-import ErrorMiddleware from '@middlewares/error-middleware';
-
-import HomeController from '@controllers/home-controller';
-import UserController from '@controllers/user-controller';
 import RecipientController from '@app/controllers/recipient-controller';
+import SessionController from '@app/controllers/session-controller';
+import IndexController from '@controllers/index-controller';
+import UserController from '@controllers/user-controller';
+import AuthMiddleware from '@middlewares/auth-middleware';
+import { Router } from 'express';
 
 const routes = Router();
 
-routes.get('/', HomeController.index);
+//* Routes that don't need authentication
+routes.get('/', IndexController.index);
+routes.post('/session', SessionController.store);
+routes.post('/users', UserController.store);
+
+//* Routes that need authentication
+routes.use(AuthMiddleware);
 
 routes.get('/users', UserController.index);
 routes.get('/recipients', RecipientController.index);
-routes.post('/users', ErrorMiddleware, UserController.store);
-routes.post('/recipients', ErrorMiddleware, RecipientController.store);
+routes.post('/recipients', RecipientController.store);
 
 export default routes;

@@ -1,7 +1,7 @@
-import { Sequelize, ConnectionRefusedError } from 'sequelize';
-
 import databaseConfig from '@configs/database';
-import ErrorHanddler from '@app/errors/error-handdler';
+import { Sequelize } from 'sequelize';
+import logger from '@logs/logger';
+import HttpException from '@app/errors/exception';
 
 const {
   dialect,
@@ -25,6 +25,14 @@ class Database {
       `${dialect}://${username}:${password}@${host}:${port}/${database}`,
       { define }
     );
+    try {
+      await this.connection.authenticate();
+      logger.info('Connection has been established successfully.');
+    } catch (error) {
+      logger.error(
+        new HttpException(500, 'Unable to connect to the database!', error)
+      );
+    }
   }
 }
 export default new Database();

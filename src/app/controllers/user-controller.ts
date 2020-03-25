@@ -1,14 +1,19 @@
+import HttpException from '@app/errors/exception';
 import User from '@models/user';
 import { userSchema } from '@validations/user-validation';
 import { NextFunction, Request, Response } from 'express';
 
 class UserController {
-  public async index(_: Request, res: Response): Promise<Response> {
+  public async index(
+    _: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response | undefined> {
     try {
       const users = await User.findAll({ attributes: ['name', 'email'] });
       return res.status(200).json(users);
     } catch (error) {
-      return res.status(400).json('Load users failed');
+      next(new HttpException(400, 'Load users failed', error));
     }
   }
 
@@ -16,14 +21,14 @@ class UserController {
     req: Request,
     res: Response,
     next: NextFunction
-  ): Promise<Response> {
+  ): Promise<Response | undefined> {
     try {
       await userSchema.validate(req.body);
 
       const { name, email } = await User.create(req.body);
       return res.json({ name, email });
     } catch (error) {
-      return res.status(500).json('Conexão com o banco de dados foi recusada!');
+      next(new HttpException(400, 'Store users failed!', error));
     }
   }
 }

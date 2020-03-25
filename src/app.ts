@@ -15,6 +15,7 @@ class App {
     this.express = express();
     this.middlewares();
     this.routes();
+    this.errorsHandle();
   }
 
   private middlewares(): void {
@@ -22,11 +23,14 @@ class App {
     this.express.use(helmet());
     this.express.use(cors());
     this.express.use(compression());
-    this.express.use(ErrorMiddleware);
   }
 
   private routes(): void {
     this.express.use(routes);
+  }
+
+  private errorsHandle(): void {
+    this.express.use(ErrorMiddleware);
   }
 }
 
