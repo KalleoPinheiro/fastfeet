@@ -1,6 +1,6 @@
 import HttpException from '@app/errors/exception';
 import User from '@models/user';
-import { userSchema } from '@validations/user-validation';
+import { userStoreSchema } from '@validations/user-validation';
 import { NextFunction, Request, Response } from 'express';
 
 class UserController {
@@ -23,7 +23,7 @@ class UserController {
     next: NextFunction
   ): Promise<Response | undefined> {
     try {
-      await userSchema.validate(req.body);
+      await userStoreSchema.validate(req.body);
 
       const { name, email } = await User.create(req.body);
       return res.json({ name, email });
