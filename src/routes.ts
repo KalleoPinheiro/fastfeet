@@ -29,13 +29,13 @@ routes.get('/users', UserController.index);
 //* Recipient routes
 routes.get('/recipients', RecipientController.index);
 routes.post('/recipients', RecipientController.store);
-routes.patch('/recipients:id', RecipientController.update);
-routes.delete('/recipients:id', RecipientController.delete);
+routes.patch('/recipients/:id', RecipientController.update);
+routes.delete('/recipients/:id', RecipientController.delete);
 
 //* Deliveryman routes
-routes.get('/couriers', DeliverymanController.index);
-routes.post('/couriers', DeliverymanController.store);
-// routes.patch('/couriers:id', DeliverymanController.update);
-// routes.delete('/couriers:id', DeliverymanController.delete);
+routes.get('/deliverers', DeliverymanController.index);
+routes.post('/deliverers', DeliverymanController.store);
+routes.patch('/deliverers/:id', DeliverymanController.update);
+routes.delete('/deliverers/:id', DeliverymanController.remove);
 
 export default routes;

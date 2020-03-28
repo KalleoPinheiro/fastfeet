@@ -9,7 +9,7 @@ module.exports = {
           name: 'Distribuidora FastFeet',
           email: 'admin@fastfeet.com',
           admin: true,
-          password_hash: hashSync('123456', 8),
+          password_hash: hashSync('12345678', 8),
           created_at: new Date(),
           updated_at: new Date(),
         },

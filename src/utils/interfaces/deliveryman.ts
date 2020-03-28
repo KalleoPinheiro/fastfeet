@@ -6,14 +6,16 @@ import {
   Association,
 } from 'sequelize';
 
-export interface ICouriersInstance extends Association<ICouriers>, ICouriers {
-  avatar: ICouriersInstance;
-  getAvatar: BelongsToGetAssociationMixin<ICouriersInstance>;
-  setAvatar: BelongsToSetAssociationMixin<ICouriersInstance, number>;
-  createAvatar: BelongsToCreateAssociationMixin<ICouriers>;
+export interface IDeliverersInstance
+  extends Association<IDeliverers>,
+    IDeliverers {
+  avatar: IDeliverersInstance;
+  getAvatar: BelongsToGetAssociationMixin<IDeliverersInstance>;
+  setAvatar: BelongsToSetAssociationMixin<IDeliverersInstance, number>;
+  createAvatar: BelongsToCreateAssociationMixin<IDeliverers>;
 }
 
-export interface ICouriers extends Model {
+export interface IDeliverers extends Model {
   readonly id?: number;
   readonly name: string;
   readonly email: string;

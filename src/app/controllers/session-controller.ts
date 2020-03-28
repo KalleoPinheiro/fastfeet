@@ -5,6 +5,7 @@ import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
 import authConfig from '@configs/auth';
 import HttpException from '@app/errors/exception';
+import { IUser } from '@utils/interfaces/user';
 
 class SessionController {
   public async store(
@@ -19,7 +20,7 @@ class SessionController {
 
       const { email, password } = req.body;
 
-      const user = await User.findOne({ where: { email } });
+      const user: IUser | null = await User.findOne({ where: { email } });
 
       if (!user) {
         throw new HttpException(401, 'User not found!');
@@ -29,20 +30,27 @@ class SessionController {
         throw new HttpException(401, 'Password does not match!');
       }
 
-      const { id, name } = user;
+      const { id, name, admin } = user;
 
       return res.json({
         user: {
           id,
           name,
           email,
+          admin,
         },
-        token: sign({ id }, `${authConfig.secret}`, {
+        token: sign({ id, admin }, `${authConfig.secret}`, {
           expiresIn: authConfig.expiresIn,
         }),
       });
     } catch (error) {
-      next(new HttpException(500, 'Session failed', error));
+      next(
+        new HttpException(
+          error.status || 500,
+          error.message || 'Session failed',
+          error
+        )
+      );
     }
   }
 }

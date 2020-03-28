@@ -1,10 +1,10 @@
 import Database from '@database/index';
 import { StaticModel } from '@typings/static-model';
-import { ICouriers } from '@utils/interfaces/deliveryman';
+import { IDeliverers } from '@utils/interfaces/deliveryman';
 import { DataTypes } from 'sequelize';
 import File from './file';
 
-const Deliveryman = Database.connection.define('couriers', {
+const Deliveryman = Database.connection.define('deliverers', {
   name: {
     type: DataTypes.STRING,
   },
@@ -14,7 +14,7 @@ const Deliveryman = Database.connection.define('couriers', {
   avatar_id: {
     type: DataTypes.INTEGER,
   },
-}) as StaticModel<ICouriers>;
+}) as StaticModel<IDeliverers>;
 
 Deliveryman.belongsTo(File, {
   foreignKey: 'avatar_id',

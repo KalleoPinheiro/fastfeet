@@ -23,7 +23,11 @@ const AuthMiddleware = async (
         token,
         `${authConfig.secret}`
       );
-      req.userId = decoded?.id;
+
+      const { id, admin } = decoded;
+
+      req.userId = id;
+      req.isAdmin = admin;
 
       return next();
     } catch (error) {
