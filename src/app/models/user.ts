@@ -1,11 +1,8 @@
+import Database from '@database/index';
+import { StaticModel } from '@typings/static-model';
+import { IUser } from '@utils/interfaces/user';
 import { hash } from 'bcrypt';
 import { DataTypes } from 'sequelize';
-
-import Database from '@database/index';
-
-import { StaticModel } from '@typings/static-model';
-
-import { IUser } from '@utils/interfaces/user';
 
 const User = Database.connection.define('users', {
   name: {

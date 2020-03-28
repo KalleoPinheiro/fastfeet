@@ -1,7 +1,7 @@
 import { string, object, ref } from 'yup';
 import { States } from '@utils/constants/states';
 
-export const recipientSchema = object().shape({
+export const recipientStoreSchema = object().shape({
   name: string()
     .required()
     .min(3)

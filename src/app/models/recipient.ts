@@ -1,11 +1,8 @@
-import { DataTypes } from 'sequelize';
-
 import Database from '@database/index';
-
 import { StaticModel } from '@typings/static-model';
-
-import { IRecipients } from '@utils/interfaces/recipients';
 import { States } from '@utils/constants/states';
+import { IRecipients } from '@utils/interfaces/recipients';
+import { DataTypes } from 'sequelize';
 
 const Recipients = Database.connection.define('recipients', {
   name: {

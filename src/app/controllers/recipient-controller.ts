@@ -1,7 +1,7 @@
 import HttpException from '@app/errors/exception';
 import Recipients from '@app/models/recipient';
 import {
-  recipientSchema,
+  recipientStoreSchema,
   recipientUpdateSchema,
 } from '@validations/recipients-validation';
 import { NextFunction, Request, Response } from 'express';
@@ -28,7 +28,7 @@ class RecipientController {
     next: NextFunction
   ): Promise<Response | undefined> {
     try {
-      await recipientSchema.validate(req.body);
+      await recipientStoreSchema.validate(req.body);
 
       const {
         name,
